@@ -1,0 +1,35 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 700px;
+    height: 700px;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px;
+    border: 5px solid black;
+    border-radius: 5px;
+    background: rgb(0, 255, 128);
+    color: white;
+    margin: auto;
+}
+
+.cell {
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    border-radius: 50%;
+    outline: 5px;
+}
+
+
+
+.message {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 70px;
+}
