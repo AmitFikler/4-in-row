@@ -73,3 +73,47 @@ class Model{
         this.currentPlayer = this.currentPlayer === 'red' ? 'blue' : 'red';
       }
 }
+
+class View {
+    constructor() {
+      this.playEvent = new Event();
+    }
+  
+    render() {
+      const board = document.createElement('div');
+      board.className = 'board';
+  
+      this.cells = Array(49).fill().map((_, i) => {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+  
+        cell.addEventListener('click', () => {
+          this.playEvent.trigger(i);
+        });
+  
+        board.appendChild(cell);
+  
+        return cell;
+      });
+  
+      this.message = document.createElement('div');
+      this.message.className = 'message';
+  
+      document.body.appendChild(board);
+      document.body.appendChild(this.message);
+    }
+  
+    updateCell(data) {
+      this.cells[data.move].style.backgroundColor = data.player;
+      this.cells[data.move].style.borderRadius = "50%";
+    }
+  
+    victory(winner) {
+      this.message.innerHTML = `${winner} wins!`;
+      this.message.style.backgroundColor = winner
+    }
+  
+    draw() {
+      this.message.innerHTML = "It's a draw!";
+    }
+}
